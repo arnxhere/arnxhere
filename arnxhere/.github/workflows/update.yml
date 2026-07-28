@@ -1,0 +1,29 @@
+name: Update Readme Profile
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Roz raat/subah automatically chalega
+  workflow_dispatch: # Manual run ka option dene ke liye
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/python-script@v3
+        with:
+          python-version: '3.x'
+
+      - name: Run Python script
+        run: python main.py # (Agar tumhari script ka naam kuch aur hai jaise update_readme.py, toh wahi likhna)
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --quiet || git commit -m "Auto update README date"
+          git push
