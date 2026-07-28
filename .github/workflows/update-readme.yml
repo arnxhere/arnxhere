@@ -18,7 +18,7 @@ jobs:
 
       - name: Run Banner Script
         run: |
-          python generate_banner.py
+          python .github/workflows/generate_banner.py
 
       - name: Commit and Push Changes
         run: |
