@@ -18,7 +18,7 @@ jobs:
           python-version: '3.x'
 
       - name: Run Python script
-        run: python main.py # (Agar tumhari script ka naam kuch aur hai jaise update_readme.py, toh wahi likhna)
+        run: run: python generate_banner.py
 
       - name: Commit and push changes
         run: |
